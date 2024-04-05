@@ -17,6 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from RockPaperScissors.views import RockPaperScissorsView
+from GuessNumber.views import GuessNumberView
+from BiggerSmaller.views import BiggerSmallerView
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('rockpaperscissors/', RockPaperScissorsView.as_view()),
+    path('guessnumber/', GuessNumberView.as_view()),
+    path('biggersmaller/', BiggerSmallerView.as_view()),
 ]
