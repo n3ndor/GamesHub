@@ -26,7 +26,7 @@ from BiggerSmaller.views import BiggerSmallerView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/games/', GamesListView.as_view()),
-    path('rockpaperscissors/', RockPaperScissorsView.as_view(), name='Rock Paper Scissors'),
-    path('guessnumber/', GuessNumberView.as_view(), name='Guess Number'),
-    path('biggersmaller/', BiggerSmallerView.as_view(), name='Bigger Smaller'),
+    path('rockpaperscissors/', RockPaperScissorsView, name='Rock Paper Scissors'),
+    path('guessnumber/', GuessNumberView, name='Guess Number'),
+    path('biggersmaller/', BiggerSmallerView, name='Bigger Smaller'),
 ]
