@@ -10,7 +10,7 @@ export default function Home() {
       <div className="flex flex-col mt-10 ml-10">
         <Link className="text-blue-500 " href="/rockpaperscissors">Rock Paper Scissors</Link>
         <Link className="text-blue-500 " href="/guessnumber">Guess Number</Link>
-        <Link className="text-blue-500 " href="/biggersmaller">Bigger Smaller</Link>
+        <Link className="text-blue-500 " href="/tictactoe">Tic Tac Toe</Link>
       </div>
       <ListGames />
 

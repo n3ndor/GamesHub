@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'RockPaperScissors',
     'GuessNumber',
-    'BiggerSmaller',
+    'TicTacToe',
 ]
 
 MIDDLEWARE = [

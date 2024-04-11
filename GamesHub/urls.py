@@ -20,7 +20,7 @@ from django.urls import path
 from .view import GamesListView
 from RockPaperScissors.views import RockPaperScissorsView
 from GuessNumber.views import GuessNumberView
-from BiggerSmaller.views import BiggerSmallerView
+from TicTacToe.views import TicTacToeView
 
 
 urlpatterns = [
@@ -28,5 +28,5 @@ urlpatterns = [
     path('api/games/', GamesListView.as_view()),
     path('rockpaperscissors/', RockPaperScissorsView, name='Rock Paper Scissors'),
     path('guessnumber/', GuessNumberView, name='Guess Number'),
-    path('biggersmaller/', BiggerSmallerView, name='Bigger Smaller'),
+    path('tictactoe/', TicTacToeView, name='Tic Tac Toe'),
 ]
