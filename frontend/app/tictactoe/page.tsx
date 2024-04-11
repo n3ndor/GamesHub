@@ -9,28 +9,49 @@ export default function TicTacToe() {
   useEffect(() => {
       fetch('http://localhost:8000/tictactoe/', {
           method: 'GET',
-          credentials: 'include',
+          credentials: 'include',  // Ensure cookies are sent with the request
       })
       .then(response => response.json())
       .then(data => {
-          setBoard(data.board);
+          setBoard(data.board);  // Initialize board with empty spaces
       })
       .catch(error => console.error('Error fetching the game board: ', error));
   }, []);
 
+  const handleCellClick = (index: number) => {
+      if (board[index] !== " ") return;  // Ignore the click if the cell is not empty
+
+      fetch('http://localhost:8000/tictactoe/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ index }),
+          credentials: 'include',
+      })
+      .then(response => response.json())
+      .then(data => {
+          setBoard(data.board);  // Update board with 'X' placed at the clicked cell
+      })
+      .catch(error => console.error('Error making a move: ', error));
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-200">
-        <div className="w-full max-w-md bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mx-4 sm:mx-0">
-            <h2 className="text-3xl font-bold text-center mb-8">Tic-Tac-Toe Game</h2>
-            <div className="grid grid-cols-3 gap-3">
-                {board.map((cell, index) => (
-                    <div key={index} className="h-20 w-20 flex justify-center items-center text-4xl bg-blue-500 text-white font-bold rounded">
-                        {cell}
-                    </div>
-                ))}
-            </div>
-            <p className="text-center text-xl font-bold mt-6 animate-pulse">Place your mark in the grid!</p>
-        </div>
-    </div>
-);
+      <div className="flex justify-center items-center min-h-screen bg-gray-200">
+          <div className="w-full max-w-md bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mx-4 sm:mx-0">
+              <h2 className="text-3xl font-bold text-center mb-8">Tic-Tac-Toe Game</h2>
+              <div className="grid grid-cols-3 gap-3">
+                  {board.map((cell, index) => (
+                      <div key={index} className={`h-20 w-20 flex justify-center items-center text-4xl 
+                        ${cell === ' ' ? 'bg-blue-500 hover:bg-blue-700 cursor-pointer' 
+                          : 'bg-green-300'} text-green-800 font-bold rounded`}
+                          onClick={() => handleCellClick(index)}>
+                          {cell}
+                      </div>
+                  ))}
+              </div>
+              <p className="text-center text-xl font-bold mt-6 animate-pulse">Click on an empty cell to place 'X'</p>
+          </div>
+      </div>
+  );
 }
