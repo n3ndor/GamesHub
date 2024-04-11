@@ -10,6 +10,7 @@ export default function GuessNumber() {
   useEffect(() => {
     fetch('http://localhost:8000/guessnumber/', {
       method: 'GET',
+      credentials: 'include',
     })
     .then(response => response.json())
     .then(data => {
@@ -25,6 +26,7 @@ export default function GuessNumber() {
     }
     fetch('http://localhost:8000/guessnumber/', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
