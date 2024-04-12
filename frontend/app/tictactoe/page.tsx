@@ -47,9 +47,9 @@ export default function TicTacToe() {
     .then(response => response.json())
     .then(data => {
         setBoard(data.board);
-        setWinner(data.winner);
+        setWinner(null);
     })
-    .catch(error => console.error('Error fetching the game board: ', error));
+    .catch(error => console.error('Error resetting the game board: ', error));
   };
 
 
