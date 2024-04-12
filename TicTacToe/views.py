@@ -12,10 +12,15 @@ def TicTacToeView(request):
 
     elif request.method == 'POST':
         board = request.session.get('board', [" " for _ in range(9)])
-        index = request.data.get('index')
+        index = request.data.get('index', None)
 
-        if board[int(index)] == " ":
+        if index is not None and board[int(index)] == " ":
             board[int(index)] = 'X'
+
+            empty_indices = [i for i, x in enumerate(board) if x == " "]
+            if empty_indices:
+                opponent_index = random.choice(empty_indices)
+                board[opponent_index] = 'O'
 
         request.session['board'] = board
         return Response({"board": board})

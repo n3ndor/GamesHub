@@ -9,17 +9,17 @@ export default function TicTacToe() {
   useEffect(() => {
       fetch('http://localhost:8000/tictactoe/', {
           method: 'GET',
-          credentials: 'include',  // Ensure cookies are sent with the request
+          credentials: 'include',
       })
       .then(response => response.json())
       .then(data => {
-          setBoard(data.board);  // Initialize board with empty spaces
+          setBoard(data.board);
       })
       .catch(error => console.error('Error fetching the game board: ', error));
   }, []);
 
   const handleCellClick = (index: number) => {
-      if (board[index] !== " ") return;  // Ignore the click if the cell is not empty
+      if (board[index] !== " ") return;
 
       fetch('http://localhost:8000/tictactoe/', {
           method: 'POST',
@@ -31,7 +31,7 @@ export default function TicTacToe() {
       })
       .then(response => response.json())
       .then(data => {
-          setBoard(data.board);  // Update board with 'X' placed at the clicked cell
+          setBoard(data.board);
       })
       .catch(error => console.error('Error making a move: ', error));
   };
@@ -42,12 +42,14 @@ export default function TicTacToe() {
               <h2 className="text-3xl font-bold text-center mb-8">Tic-Tac-Toe Game</h2>
               <div className="grid grid-cols-3 gap-3">
                   {board.map((cell, index) => (
-                      <div key={index} className={`h-20 w-20 flex justify-center items-center text-4xl 
-                        ${cell === ' ' ? 'bg-blue-500 hover:bg-blue-700 cursor-pointer' 
-                          : 'bg-green-300'} text-green-800 font-bold rounded`}
-                          onClick={() => handleCellClick(index)}>
-                          {cell}
-                      </div>
+                  <div key={index} 
+                    className={`h-20 w-20 flex justify-center items-center text-4xl rounded 
+                                ${cell === 'X' ? 'bg-green-300 text-green-800' : 
+                                cell === 'O' ? 'bg-red-300 text-red-800' : 
+                                'bg-blue-500 text-blue-800 hover:bg-blue-700 cursor-pointer'}`}
+                    onClick={() => handleCellClick(index)}>
+                    {cell}
+                  </div>
                   ))}
               </div>
               <p className="text-center text-xl font-bold mt-6 animate-pulse">Click on an empty cell to place 'X'</p>
