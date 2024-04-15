@@ -3,19 +3,24 @@
 
 import { useState } from 'react';
 
-export default function Home() {
-  const [message, setMessage] = useState('');
+export default function Blackjack() {
+  const [card, setCard] = useState('');
 
-  const fetchMessage = async () => {
-    const response = await fetch('http://localhost:8000/blackjack/');
+  const fetchRandomCard = async () => {
+    const response = await fetch('http://localhost:8000/blackjack/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     const data = await response.json();
-    setMessage(data.message);
+    setCard(data.card);
   };
 
   return (
     <div>
-      <button onClick={fetchMessage} className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 mt-4 rounded">Fetch Api</button>
-      <p>{message}</p>
+      <button onClick={fetchRandomCard} className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded">Get Random Card</button>
+      <p>{card}</p>
     </div>
   );
 }
