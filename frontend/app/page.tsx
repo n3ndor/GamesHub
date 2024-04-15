@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <UnderDevelopment />
 
-      <h1 className="text-3xl font-bold m-20">GamesHub</h1>
+      <h1 className="text-3xl font-bold m-20 text-center md:text-left">GamesHub</h1>
 
       <ListGames />
 

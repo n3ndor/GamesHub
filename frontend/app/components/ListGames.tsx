@@ -21,7 +21,7 @@ const ListGames = () => {
 
   return (
     <div className="mt-8">
-      <div className='flex'>
+      <div className='flex flex-wrap'>
         {games.map((game, index) => (
           <div key={index} className="p-4">
             <div className="px-6 py-4">
