@@ -21,6 +21,7 @@ from .view import GamesListView
 from RockPaperScissors.views import RockPaperScissorsView
 from GuessNumber.views import GuessNumberView
 from TicTacToe.views import TicTacToeView
+from Blackjack.views import BlackjackView
 
 
 urlpatterns = [
@@ -29,4 +30,5 @@ urlpatterns = [
     path('rockpaperscissors/', RockPaperScissorsView, name='Rock Paper Scissors'),
     path('guessnumber/', GuessNumberView, name='Guess Number'),
     path('tictactoe/', TicTacToeView, name='Tic Tac Toe'),
+    path('blackjack/', BlackjackView, name='Blackjack'),
 ]
