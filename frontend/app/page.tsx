@@ -1,18 +1,17 @@
-import Link from "next/link";
 import ListGames from "./components/ListGames";
 import UnderDevelopment from "./components/UnderDevelopment";
+import Hero from "./components/Hero";
 
 export default function Home() {
   return (
-    <main>
-      <UnderDevelopment />
+    <main className="flex flex-col md:flex-row min-h-screen">
 
-      <h1 className="text-3xl font-bold m-20 text-center md:text-left">GamesHub</h1>
+      <UnderDevelopment />
+      <Hero />
 
       <ListGames />
 
 
     </main>
-
   );
 }
