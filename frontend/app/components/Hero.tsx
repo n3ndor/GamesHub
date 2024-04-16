@@ -2,12 +2,12 @@
 "use client"
 
 import { useRef } from 'react';
-import { ZdogHero } from './Zdog/ZdogHero';
+
 
 function Hero() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  ZdogHero(canvasRef);
+
 
   return (
     <div className="relative z-20 bg-gray-900 overflow-hidden w-full md:w-1/3 md:min-h-screen">
